@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Laboratorio interactivo de redes neuronales en Java">
+    <title>Práctica 4 · Redes neuronales en Java</title>
+    <link rel="stylesheet" href="/styles.css?v=1.2.0">
+</head>
+<body>
+<header class="hero">
+    <div class="eyebrow">SISTEMAS INTELIGENTES · PRÁCTICA 4</div>
+    <h1>Redes neuronales <span>en Java</span></h1>
+    <p>Ejemplos de clasificación, regresión y series de tiempo con datos reales.</p>
+    <dl class="student-data">
+        <div><dt>Alumno</dt><dd>Mauricio A. Sonda Cahuich</dd></div>
+        <div><dt>Materia</dt><dd>Sistemas Inteligentes</dd></div>
+        <div><dt>Actividad</dt><dd>Práctica 4</dd></div>
+    </dl>
+    <div id="api-status" class="status"><i></i><span>API lista</span></div>
+</header>
+
+<main>
+    <section class="prompt-card panel" aria-labelledby="prompt-title">
+        <div class="prompt-head">
+            <div>
+                <div class="section-label">USO DE IA GENERATIVA</div>
+                <h2 id="prompt-title">Prompt utilizado para iniciar el proyecto</h2>
+                <p>Este es el primer prompt que utilicé para definir los requisitos de la práctica.</p>
+            </div>
+            <button id="copy-prompt" class="secondary compact" type="button">Copiar prompt</button>
+        </div>
+        <details>
+            <summary>Ver prompt completo</summary>
+            <pre id="original-prompt">Actúa como ingeniero de machine learning senior y desarrollador full-stack en Java. Necesito que me ayudes a completar una tarea universitaria de redes neuronales. Entrega código completo, funcional y listo para ejecutar, sin fragmentos incompletos ni "..." en el código.
+
+## CONTEXTO DE LA TAREA
+Debo implementar EN JAVA tres ejemplos de redes neuronales con datasets reales (comerciales o industriales) descargables de internet, con parámetros ajustados y resultados aceptables:
+
+1. PATTERN RECOGNITION (clasificación): problema real de clasificación comercial o industrial.
+2. FITTING (regresión): problema real de regresión comercial o industrial.
+3. SERIES DE TIEMPO: problema de clasificación de series de tiempo, real o industrial.
+
+Se permite usar frameworks (por ejemplo Deeplearning4j, Smile, Weka, Encog o implementación propia de MLP). Elige el que mejor funcione y justifícalo en una línea.
+
+## DATASETS
+- Propón para cada problema un dataset público real (UCI, Kaggle, UCR Time Series Archive, OpenML, etc.) con enlace directo de descarga.
+- Prefiere datasets que se puedan descargar por URL directa desde el código (sin login) para que el programa funcione solo.
+- Ejemplos de ideas (puedes proponer mejores): clasificación de fallas/calidad (Wine Quality, Steel Plates Faults, Bank Marketing), regresión (Concrete Compressive Strength, Energy Efficiency, Airfoil Self-Noise), series de tiempo (UCR: FordA, ECG200, Wafer, ItalyPowerDemand).
+- Incluye el preprocesamiento necesario (normalización, codificación de etiquetas, split train/validation/test).
+
+## REQUISITOS TÉCNICOS
+- Lenguaje: Java 17+, proyecto con Maven (pom.xml completo con dependencias).
+- Estructura de proyecto clara: un módulo/paquete por ejemplo (classification, regression, timeseries) más el módulo web.
+- Hiperparámetros ajustados: muestra la configuración final (capas, neuronas, activación, learning rate, épocas, optimizador, regularización) y explica brevemente cómo los ajusté (prueba de varias configuraciones o validación cruzada).
+- Métricas:
+  - Clasificación: accuracy, precisión, recall, F1, matriz de confusión.
+  - Regresión: RMSE, MAE, R², gráfica real vs predicho.
+  - Series de tiempo: accuracy, F1, matriz de confusión, curva de pérdida.
+- Resultados aceptables: si el primer intento da resultados pobres, itera con ajustes y dime cuáles hiciste.
+- Fija semillas aleatorias para reproducibilidad.
+- Código comentado en español.
+
+## PÁGINA WEB PÚBLICA (ENTREGABLE FINAL)
+Crea una aplicación web que permita ejecutar los 3 ejemplos y visualizar resultados:
+- Backend en Java (Spring Boot o Javalin) que exponga endpoints para entrenar/ejecutar cada modelo y devolver métricas y datos de gráficas en JSON.
+- Frontend con HTML/CSS/JS (puede usar Chart.js) con:
+  - Una pestaña o sección por ejemplo (Clasificación, Regresión, Series de tiempo).
+  - Botón "Entrenar / Ejecutar", indicador de carga y opción de modificar hiperparámetros clave (épocas, learning rate, neuronas).
+  - Visualizaciones: curva de pérdida, matriz de confusión, real vs predicho, métricas en tarjetas.
+  - Para evitar tiempos de espera largos en hosting gratuito, incluye modelos pre-entrenados o entrenamiento ligero con opción de cargar resultados guardados.
+- ESTÉTICA MODO OSCURO CON CAFÉS OSCUROS Y CONTRASTE:
+  - Fondo principal café muy oscuro (ej. #1a1210 / #211714).
+  - Tarjetas y paneles en café oscuro medio (ej. #2b1d17 / #3a2820).
+  - Acentos en tonos cálidos de alto contraste (caramelo #d69a5b, crema #f2e3d0, ámbar #e8a94d).
+  - Texto principal crema claro sobre fondo oscuro, buen contraste (WCAG AA).
+  - Gráficas con paleta cálida (caramelo, ámbar, terracota, crema) sobre fondo oscuro.
+  - Diseño responsivo, tipografía limpia, bordes redondeados, sombras suaves.
+- Debe estar listo para desplegarse públicamente: incluye Dockerfile y las instrucciones paso a paso para desplegar gratis en Render, Railway o Fly.io, y que el resultado sea un enlace público.
+
+## ENTREGABLES QUE DEBES GENERARME
+1. Árbol de carpetas del proyecto completo.
+2. Todos los archivos con su código completo (pom.xml, clases Java, frontend, Dockerfile, .gitignore).
+3. README.md con: descripción, requisitos, cómo correr cada ejemplo en local, cómo correr la web, cómo desplegar, enlaces a datasets.
+4. Un resumen por ejemplo: dataset (con enlace), arquitectura de la red, hiperparámetros finales, métricas obtenidas y análisis breve de resultados.
+5. Guía para subir el proyecto a GitHub (comandos git) y publicar un ejecutable público (GitHub Releases con el JAR y/o enlace de la web desplegada).
+6. Lista de capturas de pantalla que debo tomar como evidencia para el reporte (qué pantalla, qué ejecutar).
+7. Plantilla de la sección "Uso de IA generativa" del reporte, donde indique el origen (modelo usado) y espacio para pegar los prompts.
+
+## REGLAS DE RESPUESTA
+- Si la respuesta es muy larga, divídela en partes numeradas y avísame al final de cada parte qué sigue; espera mi "continúa" para la siguiente.
+- No inventes resultados de métricas: si no puedes ejecutar el código, indícame qué valores aproximados esperar y dime que debo correrlo para confirmar.
+- Verifica que las versiones de las librerías sean compatibles entre sí.
+- Antes de escribir código, dame en 10 líneas máximo el plan: datasets elegidos, framework y arquitectura de cada red.</pre>
+        </details>
+    </section>
+
+    <nav class="tabs" aria-label="Experimentos">
+        <button class="tab active" data-type="classification">Clasificación</button>
+        <button class="tab" data-type="regression">Regresión</button>
+        <button class="tab" data-type="timeseries">Serie de tiempo</button>
+    </nav>
+
+    <section class="workspace">
+        <aside class="controls panel">
+            <div>
+                <div class="section-label">CONFIGURACIÓN</div>
+                <h2 id="experiment-title">Wine Quality</h2>
+                <p id="experiment-copy">Clasificación comercial de calidad del vino.</p>
+            </div>
+            <label>Épocas <input id="epochs" type="number" min="10" max="1000" placeholder="Automático"></label>
+            <label>Learning rate <input id="learning-rate" type="number" min="0.00001" max="0.1" step="0.0001" placeholder="0.001"></label>
+            <label>Neuronas principales <input id="neurons" type="number" min="4" max="256" placeholder="32"></label>
+            <button id="train" class="primary"><span>Entrenar / ejecutar</span><b>→</b></button>
+            <button id="precomputed" class="secondary">Cargar resultado real guardado</button>
+            <div id="loader" class="loader hidden"><i></i><span>Entrenando en Java…</span></div>
+            <p id="connection-message" class="connection-message hidden"></p>
+            <p class="note">Semilla fija 20261013 · Normalización sin fuga de datos</p>
+        </aside>
+
+        <div class="results">
+            <section id="run-summary" class="run-summary panel waiting" aria-live="polite" tabindex="-1">
+                <div class="run-indicator" aria-hidden="true">○</div>
+                <div class="run-summary-copy">
+                    <span id="run-kicker">RESULTADO DE LA OPERACIÓN</span>
+                    <h2 id="run-title">Listo para ejecutar</h2>
+                    <p id="run-message">Modifica los parámetros y presiona “Entrenar / ejecutar”. Aquí se mostrará un resumen claro de esa operación.</p>
+                </div>
+                <dl id="run-data" class="run-data"></dl>
+            </section>
+            <section id="metrics" class="metric-grid" aria-live="polite"></section>
+            <section class="chart-grid">
+                <article class="panel chart-card">
+                    <div class="card-head"><div><span>EVOLUCIÓN</span><h3>Curva de pérdida</h3></div></div>
+                    <canvas id="loss-chart"></canvas>
+                </article>
+                <article class="panel chart-card">
+                    <div class="card-head"><div><span id="second-kicker">EVALUACIÓN</span><h3 id="second-title">Matriz de confusión</h3></div></div>
+                    <canvas id="second-chart"></canvas>
+                </article>
+            </section>
+            <section class="panel detail-card">
+                <div class="card-head"><div><span>TRAZABILIDAD</span><h3>Configuración y análisis</h3></div></div>
+                <div id="details" class="details"><p>Carga un resultado para ver los detalles.</p></div>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <strong>Mauricio A. Sonda Cahuich</strong> · Sistemas Inteligentes · Práctica 4<br>
+    Proyecto reproducible con Spring Boot y Java 17
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="/app.js?v=1.2.0"></script>
+</body>
+</html>
